@@ -1,7 +1,8 @@
 import React from 'react';
 import { Container } from 'react-bootstrap';
-import MainPage from './components/MainPage/MainPage';
 import { Redirect, Route, Switch } from 'react-router-dom';
+
+import MainPage from './components/MainPage/MainPage';
 import RepoPage from './components/RepoPage/RepoPage';
 
 const App: React.FC = () => {

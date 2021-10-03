@@ -1,47 +1,53 @@
 import React, { useEffect, useState } from 'react';
 import { ListGroup } from 'react-bootstrap';
-import RepoItem from '../RepoItem/RepoItem';
 import { useQuery } from 'react-apollo';
+
 import { GET_SEARCH_RESULTS } from '../../queries/queries';
+
+import RepoItem from '../RepoItem/RepoItem';
 import PrimaryButton from '../PrimaryButton/PrimaryButton';
 import Loader from '../Loader/Loader';
 
-interface IRepoListProps {
-  searchQuery: string;
+export interface IRepositoryNode {
+  description?: string;
+  id: string;
+  nameWithOwner: string;
+  stargazerCount: number;
+  primaryLanguage: { name: string; color: string };
 }
 
-type SearchResult = {
+interface ISearchResult {
   search: {
     edges: SearchResultItem[];
     repositoryCount: number;
     pageInfo: PageInfo;
     __typename: 'SearchResultItemConnection';
   };
+}
+
+export type ILanguageInfo = {
+  color: string;
+  name: string;
+  __typename: 'Language';
 };
 
 type SearchResultItem = {
-  node: RepositoryNode;
+  node: IRepositoryNode;
   __typename: 'SearchResultItem';
 };
-
 type PageInfo = {
   endCursor: string;
   hasNextPage: boolean;
   hasPreviousPage: boolean;
   __typename: 'PageInfo';
 };
-
-type RepositoryNode = {
-  description: string;
-  id: string;
-  nameWithOwner: string;
-  stargazerCount: number;
-  primaryLanguage: { name: string; color: string };
+type RepoListProps = {
+  searchQuery: string;
 };
 
 const PAGE_SIZE = 5;
 
-const RepoList: React.FC<IRepoListProps> = ({ searchQuery }) => {
+const RepoList: React.FC<RepoListProps> = ({ searchQuery }) => {
   const [repos, setRepos] = useState<Array<SearchResultItem>>([]);
   const [moreLoading, setMoreLoading] = useState(false);
 
@@ -60,7 +66,7 @@ const RepoList: React.FC<IRepoListProps> = ({ searchQuery }) => {
         pageSize: PAGE_SIZE,
         searchQuery: searchQuery,
       },
-      updateQuery: (previousResult: SearchResult, { fetchMoreResult }) => {
+      updateQuery: (previousResult: ISearchResult, { fetchMoreResult }) => {
         return fetchMoreResult
           ? {
               search: {
@@ -96,7 +102,7 @@ const RepoList: React.FC<IRepoListProps> = ({ searchQuery }) => {
   return (
     <ListGroup bsPrefix="mt-3">
       {repos.map((repo: SearchResultItem) => {
-        const repoNode: RepositoryNode = repo.node;
+        const repoNode: IRepositoryNode = repo.node;
         return <RepoItem key={repoNode.id} repoInfo={repoNode} />;
       })}
       {data.search.pageInfo.hasNextPage ? (

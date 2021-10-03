@@ -2,13 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import ApolloClient, { InMemoryCache } from 'apollo-boost';
 import { ApolloProvider } from 'react-apollo';
+import { BrowserRouter } from 'react-router-dom';
 
 import './index.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import reportWebVitals from './reportWebVitals';
 
 import App from './App';
-import { BrowserRouter } from 'react-router-dom';
 
 const client = new ApolloClient({
   uri: 'https://api.github.com/graphql',

@@ -2,19 +2,13 @@ import React from 'react';
 import { ListGroup, Card } from 'react-bootstrap';
 import { useHistory } from 'react-router-dom';
 
-type RepositoryNode = {
-  description?: string;
-  id: string;
-  nameWithOwner: string;
-  stargazerCount: number;
-  primaryLanguage?: { name?: string; color?: string };
-};
+import { IRepositoryNode } from '../RepoList/RepoList';
 
-interface IRepoItemProps {
-  repoInfo: RepositoryNode;
+type RepoItemProps = {
+  repoInfo: IRepositoryNode;
 }
 
-const RepoItem: React.FC<IRepoItemProps> = ({ repoInfo }) => {
+const RepoItem: React.FC<RepoItemProps> = ({ repoInfo }) => {
   const history = useHistory();
   const openRepoHandler = () => {
     history.push(`/repository/${repoInfo.id}`);
