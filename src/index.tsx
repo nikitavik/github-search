@@ -15,6 +15,7 @@ const client = new ApolloClient({
   headers: {
     Authorization: `bearer ${process.env.REACT_APP_GH_API_KEY}`,
   },
+  cache: new InMemoryCache(),
 });
 
 ReactDOM.render(
