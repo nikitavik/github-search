@@ -3,6 +3,7 @@ import { ListGroup, Card } from 'react-bootstrap';
 import { useHistory } from 'react-router-dom';
 
 import { IRepositoryNode } from '../RepoList/RepoList';
+import LangBox from '../LangBox/LangBox';
 
 type RepoItemProps = {
   repoInfo: IRepositoryNode;
@@ -26,17 +27,7 @@ const RepoItem: React.FC<RepoItemProps> = ({ repoInfo }) => {
         </Card.Body>
         <Card.Footer bsPrefix="d-flex justify-content-between px-3">
           <Card.Text as="div" bsPrefix="d-flex">
-            <div
-              style={{
-                display: 'inline-block',
-                width: '20px',
-                height: '20px',
-                marginRight: '0.5rem',
-                background: repoInfo.primaryLanguage?.color || '#111',
-                borderRadius: '50%',
-              }}
-            />
-            <span>{repoInfo.primaryLanguage?.name || 'Unknown'}</span>
+            <LangBox color={repoInfo.primaryLanguage?.color} name={repoInfo.primaryLanguage?.name}/>
           </Card.Text>
           <Card.Text as="div">
             <span className="me-1">{repoInfo.stargazerCount}</span>
