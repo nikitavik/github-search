@@ -86,6 +86,7 @@ const RepoList: React.FC<RepoListProps> = ({ searchQuery }) => {
         setMoreLoading(false);
       })
       .catch((e) => {
+        setMoreLoading(false);
         console.error(e);
       });
   };
