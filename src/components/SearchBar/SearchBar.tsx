@@ -16,7 +16,7 @@ const SearchBar: React.FC<ISearchBarProps> = ({ searchQuery, onChange }) => {
           placeholder="Search for repositories"
           value={searchQuery}
           onChange={(e) => onChange(e.target.value)}
-          onKeyPress={(e) => e.key === "Enter" ? e.preventDefault(): ""}
+          onKeyPress={(e) => (e.key === 'Enter' ? e.preventDefault() : '')}
         />
       </FormGroup>
     </Form>

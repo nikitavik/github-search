@@ -33,7 +33,7 @@ const RepoPage: React.FC = () => {
   return (
     <>
       <Row bsPrefix="row border border-1 m-1">
-        <Col xs={12} >
+        <Col xs={12}>
           <h2 className="m-3">{repoInfo.nameWithOwner}</h2>
         </Col>
         <Col xs={12}>
@@ -41,27 +41,37 @@ const RepoPage: React.FC = () => {
         </Col>
         <Col xs={12}>
           <div className="d-flex flex-wrap m-3">
-            <LangBox name={repoInfo.primaryLanguage?.name} color={repoInfo.primaryLanguage?.color} primary={true}/>
-            {
-              repoInfo.languages.nodes.map((lang,idx) => {
-                if (idx === 0) return
-                return <LangBox key={lang.name + idx} name={lang.name} color={lang.color}/>;
-              })
-            }
+            <LangBox
+              name={repoInfo.primaryLanguage?.name}
+              color={repoInfo.primaryLanguage?.color}
+              primary={true}
+            />
+            {repoInfo.languages.nodes.map((lang, idx) => {
+              if (idx === 0) return;
+              return (
+                <LangBox
+                  key={lang.name + idx}
+                  name={lang.name}
+                  color={lang.color}
+                />
+              );
+            })}
           </div>
         </Col>
       </Row>
       <Row bsPrefix="row border border-1 m-1">
         <Col xs={4}>
           <div className="m-3 d-flex flex-nowrap align-items-baseline ">
-            <span className="me-1">Pull Requests: {repoInfo.pullRequests.totalCount}</span>
-            <i className='fas fa-code-branch'/>
+            <span className="me-1">
+              Pull Requests: {repoInfo.pullRequests.totalCount}
+            </span>
+            <i className="fas fa-code-branch" />
           </div>
         </Col>
         <Col xs={4}>
           <div className="m-3 d-flex flex-nowrap align-items-baseline ">
             <span className="me-1">Issues: {repoInfo.issues.totalCount}</span>
-            <i className='far fa-dot-circle'/>
+            <i className="far fa-dot-circle" />
           </div>
         </Col>
         <Col xs={4}>

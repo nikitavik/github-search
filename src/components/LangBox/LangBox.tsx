@@ -3,14 +3,14 @@ import React from 'react';
 type LangBoxProps = {
   color?: string;
   name?: string;
-  primary?: boolean
-}
+  primary?: boolean;
+};
 
-const LangBox: React.FC<LangBoxProps> = ({name, color, primary = false}) => {
-  const textCls = ["m-0"]
-  if (primary) textCls.push("h6")
+const LangBox: React.FC<LangBoxProps> = ({ name, color, primary = false }) => {
+  const textCls = ['m-0'];
+  if (primary) textCls.push('h6');
 
-  return(
+  return (
     <div className="d-flex align-items-center me-3 mb-2">
       <div
         style={{
@@ -22,9 +22,9 @@ const LangBox: React.FC<LangBoxProps> = ({name, color, primary = false}) => {
           borderRadius: '50%',
         }}
       />
-      <p className={textCls.join(" ")}>{name || 'Unknown'}</p>
+      <p className={textCls.join(' ')}>{name || 'Unknown'}</p>
     </div>
-  )
-}
+  );
+};
 
-export default LangBox
+export default LangBox;

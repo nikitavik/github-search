@@ -1,22 +1,22 @@
 import React, { useEffect, useState } from 'react';
+import { useRouterQuery } from '../../hooks/RouterQuery';
+import { useHistory } from 'react-router-dom';
 import { Col, Row } from 'react-bootstrap';
 
 import SearchBar from '../SearchBar/SearchBar';
 import RepoList from '../RepoList/RepoList';
-import { useHistory } from 'react-router-dom';
-import { useRouterQuery } from '../../hooks/RouterQuery';
 
 const MainPage: React.FC = () => {
-  const [searchQuery, setSearchQuery] = useState("")
-  const history = useHistory()
-  const routerQuery = useRouterQuery()
+  const [searchQuery, setSearchQuery] = useState('');
+  const history = useHistory();
+  const routerQuery = useRouterQuery();
 
   useEffect(() => {
-    const routerSearchQuery = routerQuery.get("search")
+    const routerSearchQuery = routerQuery.get('search');
     if (routerSearchQuery) {
-      setSearchQuery(routerSearchQuery)
+      setSearchQuery(routerSearchQuery);
     }
-  }, [])
+  }, []);
 
   return (
     <>
@@ -27,15 +27,18 @@ const MainPage: React.FC = () => {
       </Row>
       <Row>
         <Col xs={12}>
-          <SearchBar searchQuery={searchQuery} onChange={(value) => {
-            history.replace(`/?search=${value}`)
-            setSearchQuery(value);
-          }}/>
+          <SearchBar
+            searchQuery={searchQuery}
+            onChange={(value) => {
+              history.replace(`/?search=${value}`);
+              setSearchQuery(value);
+            }}
+          />
         </Col>
       </Row>
       <Row>
         <Col xs={12}>
-          <RepoList searchQuery={searchQuery}/>
+          <RepoList searchQuery={searchQuery} />
         </Col>
       </Row>
     </>
