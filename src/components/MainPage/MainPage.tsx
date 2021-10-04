@@ -28,7 +28,7 @@ const MainPage: React.FC = () => {
       <Row>
         <Col xs={12}>
           <SearchBar searchQuery={searchQuery} onChange={(value) => {
-            history.push(`/?search=${value}`)
+            history.replace(`/?search=${value}`)
             setSearchQuery(value);
           }}/>
         </Col>

@@ -96,8 +96,9 @@ const RepoList: React.FC<RepoListProps> = ({ searchQuery }) => {
   }, [loading, data]);
 
   if (loading) return <Loader />;
+  if (!searchQuery) return <p className="text-center p-4 h4">Please write something</p>;
   if (repos.length === 0)
-    return <p className="text-center p-4 h4">No Results</p>;
+    return <p className="text-center p-4 h4">No Results on &ldquo;{searchQuery}&rdquo;</p>;
   if (error) return <p className="text-center p-4 h-4">Something went wrong</p>;
   return (
     <ListGroup bsPrefix="mt-3">
