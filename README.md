@@ -1,3 +1,10 @@
+# To use this App
+
+To use this app you need to create you GitHub personal access token.
+1. Create your access token with repo access.
+2. Create file .env.local in project directory
+3. Write in .env.local REACT_APP_GH_API_KEY="$your_access_key$"
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
