@@ -1,7 +1,7 @@
 # To use this App
 
-To use this app you need to create you GitHub personal access token.
-1. Create your access token with repo access.
+To use this app you need to create your GitHub personal access token.
+1. Create your access token with repo access [here](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token).
 2. Create file .env.local in project directory
 3. Write in .env.local REACT_APP_GH_API_KEY="$your_access_key$"
 
